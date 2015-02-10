@@ -4,6 +4,8 @@ ruby "2.1.1"
 
 gem "rails", "3.2.21"
 
+gem 'jquery-rails'
+
 gem "pg"
 
 group :assets do
