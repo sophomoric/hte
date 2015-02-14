@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :donations
+
+  validates_presence_of :name
 end
