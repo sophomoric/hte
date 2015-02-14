@@ -21,7 +21,6 @@ gem "devise"
 gem "rolify"
 
 group :development do
-  gem "pry-debugger"
   gem "better_errors"
   gem "binding_of_caller"
   gem "debugger"
@@ -29,6 +28,9 @@ group :development do
 end
 
 group :development, :test do
+  gem "pry-debugger"
   gem "rspec-rails", "~> 3.0"
   gem 'shoulda-matchers'
 end
+
+gem 'factory_girl_rails'
