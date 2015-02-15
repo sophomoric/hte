@@ -2,19 +2,19 @@ source "https://rubygems.org"
 
 ruby "2.1.1"
 
-gem "rails", "3.2.21"
+gem "rails", "4.2.0"
 
 gem "jquery-rails"
 
 gem "pg"
 
 group :assets do
-  gem "sass-rails", "~> 3.2.3"
-  gem "uglifier", ">= 1.0.3"
+  gem "sass-rails"
+  gem "uglifier"
 end
 
-gem "paperclip", "~> 4.1"
-gem "aws-sdk", "~> 1.5.7"
+gem "paperclip"
+gem "aws-sdk"
 gem "figaro"
 
 gem "devise"
@@ -29,7 +29,7 @@ end
 
 group :development, :test do
   gem "pry-debugger"
-  gem "rspec-rails", "~> 3.0"
+  gem "rspec-rails"
   gem "shoulda-matchers"
 end
 
