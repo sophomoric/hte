@@ -4,7 +4,7 @@ ruby "2.1.1"
 
 gem "rails", "3.2.21"
 
-gem 'jquery-rails'
+gem "jquery-rails"
 
 gem "pg"
 
@@ -30,7 +30,8 @@ end
 group :development, :test do
   gem "pry-debugger"
   gem "rspec-rails", "~> 3.0"
-  gem 'shoulda-matchers'
+  gem "shoulda-matchers"
 end
 
-gem 'factory_girl_rails'
+gem "factory_girl_rails"
+gem "database_cleaner"

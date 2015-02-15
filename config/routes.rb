@@ -1,5 +1,8 @@
 Hte::Application.routes.draw do
-  get 'welcome/index'
+  resources :users, only: [] do
+    resources :donations
+  end
+
   root to: "welcome#index"
 
   devise_for :users
