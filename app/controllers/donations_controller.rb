@@ -1,9 +1,15 @@
 class DonationsController < ApplicationController
   def new
+    # @donation = Donation.new
   end
 
   def create
     @donation = current_user.donations.new(donation_params)
+    if @donation.save
+      redirect_to @donation
+    else
+      render :new
+    end
   end
 
   def show
@@ -22,6 +28,7 @@ class DonationsController < ApplicationController
   end
 
   private
+
   def donation_params
     params.require(:donation).permit(:state, :description)
   end

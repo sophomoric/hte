@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 describe DonationsController, :type => :controller do
+  def sign_in_and_stub
+    user = build(:user)
+    sign_in :user, user
+    allow(request.env['warden']).to receive(:authenticate!) { user }
+    allow(controller).to receive(:current_user) { user }
+  end
+
   before do
     @user = create(:user)
   end
@@ -14,11 +21,10 @@ describe DonationsController, :type => :controller do
 
   describe "POST #create" do
     it "returns http success" do
-      params = { description: "Its a book", state: "delivered" }.
-      merge({ user_id: @user.id })
+      sign_in_and_stub
+      params = { donation: { description: "Its a book", state: "delivered" } }
 
       post :create, params
-      expect(response).to have_http_status(:success)
       expect(Donation.count).to eq(1)
     end
   end
