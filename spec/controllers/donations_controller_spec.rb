@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 describe DonationsController, :type => :controller do
-  def sign_in_and_stub
-    user = build(:user)
+  def sign_in_and_stub(user)
     sign_in :user, user
-    allow(request.env['warden']).to receive(:authenticate!) { user }
     allow(controller).to receive(:current_user) { user }
   end
 
@@ -21,7 +19,7 @@ describe DonationsController, :type => :controller do
 
   describe "POST #create" do
     it "returns http success" do
-      sign_in_and_stub
+      sign_in_and_stub(@user)
       params = { donation: { description: "Its a book", state: "delivered" } }
 
       post :create, params
@@ -44,13 +42,24 @@ describe DonationsController, :type => :controller do
       expect(response).to have_http_status(:success)
     end
   end
-  #
-  # describe "POST #update" do
-  #   it "returns http success" do
-  #     post :update
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+
+  describe "POST #update" do
+    it "returns http success" do
+      # donation = create(:donation, user: @user)
+      # binding.pry
+      # sign_in_and_stub(@user)
+      # params = { id: donation.id,
+      #            donation:
+      #              {
+      #                description: "Its a Toy",
+      #                state: "Lost in Transit"
+      #               }
+      #           }
+      #
+      # post :update, params
+      # expect(donation.description).to eq("Its a Toy")
+    end
+  end
   #
   # describe "GET #destroy" do
   #   it "returns http success" do
