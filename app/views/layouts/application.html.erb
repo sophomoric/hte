@@ -10,6 +10,12 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+  <% if current_user %>
+    <%= render partial: "layouts/menu" %>
+  <% else %>
+    <%= link_to "login", new_user_session_url %>
+  <% end %>
+
   <%= yield %>
 
 </body>
