@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.1.1"
+ruby "2.2.0"
 
 gem "rails", "4.2.0"
 
@@ -23,12 +23,11 @@ gem "rolify"
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
-  gem "debugger"
   gem "letter_opener"
 end
 
 group :development, :test do
-  gem "pry-debugger"
+  # gem "pry-debugger"
   gem "rspec-rails"
   gem "shoulda-matchers"
 end
