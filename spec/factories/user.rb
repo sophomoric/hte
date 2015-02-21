@@ -5,4 +5,12 @@ FactoryGirl.define do
     first_name "Bob"
     last_name  "Dole"
   end
+
+  factory :admin do
+    after(:create) { |user| user.add_role(:admin) }
+  end
+
+  factory :super_admin do
+    after(:create) { |user| user.add_role(:super_admin) }
+  end
 end
