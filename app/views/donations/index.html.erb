@@ -1,0 +1,10 @@
+<% @donations.each do |donation| %>
+  <%= form_for(donation) do |f| %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+
+    <%= f.text_area :description %>
+
+    <%= f.submit %>
+  <% end %>
+<% end %>

@@ -57,19 +57,19 @@ describe DonationsController, :type => :controller do
 
   describe "POST #update" do
     it "returns http success" do
-      # donation = create(:donation, user: @user)
-      # binding.pry
-      # sign_in_and_stub(@user)
-      # params = { id: donation.id,
-      #            donation:
-      #              {
-      #                description: "Its a Toy",
-      #                state: "Lost in Transit"
-      #               }
-      #           }
-      #
-      # post :update, params
-      # expect(donation.description).to eq("Its a Toy")
+      donation = create(:donation, user: @user)
+      @request.env['HTTP_REFERER'] = 'http://test.com/sessions/new'
+      sign_in_and_stub(@user)
+      params = { id: donation.id,
+                 donation:
+                   {
+                     state: "Lost in Transit",
+                     description: "aaa"
+                    }
+                }
+      post :update, params
+
+      expect(Donation.first.state).to eq("Lost in Transit")
     end
   end
   #

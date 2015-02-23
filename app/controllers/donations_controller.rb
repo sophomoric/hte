@@ -23,12 +23,15 @@ class DonationsController < ApplicationController
 
   def update
     @donation = current_user.donations.find(params[:id])
-    # binding.pry
+    # or if an admin edits it...
+
     if @donation.update(donation_params)
-      redirect_to user_donation_url(current_user, @donation)
+      flash[:message] = "Donation Saved"
     else
-      render :edit
+      flash[:errors] = "Donation not saved"
     end
+
+    redirect_to :back
   end
 
   def index
