@@ -32,6 +32,12 @@ class DonationsController < ApplicationController
   end
 
   def index
+    user = User.find_by_id(params[:user_id])
+    if user
+      @donations = user.donations
+    else
+      render_404
+    end
   end
 
   def destroy

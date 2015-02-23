@@ -43,6 +43,18 @@ describe DonationsController, :type => :controller do
     end
   end
 
+  describe "GET #index" do
+    it "returns http success" do
+      get :index, { user_id: @user.id }
+      expect(response).to have_http_status(:success)
+    end
+
+    it "returns 404 for no user" do
+      get :index, { user_id: 10000 }
+      expect(response.status).to eq(404)
+    end
+  end
+
   describe "POST #update" do
     it "returns http success" do
       # donation = create(:donation, user: @user)
